@@ -1,3 +1,3 @@
-theme: jekyll-theme-minima
+remote_theme: "jekyll/minima@7d91bb53198e0879942c92ed1a119a342e4a11d6"
 title: Sequence Alignment using NKI
 description: "CMU 15-618 Final Project: Sequence Alignment using NKI"
