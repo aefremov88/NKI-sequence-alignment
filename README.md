@@ -13,7 +13,7 @@ In this document, we propose implementing the **Smith–Waterman algorithm** for
 ## Background
 The Smith–Waterman algorithm solves the problem of local sequence alignment: given two sequences, it identifies the best matching pair of substrings by computing an optimal alignment score based on a user-defined scoring scheme. This includes a reward for character matches, penalties for mismatches, and gap penalties for insertions or deletions. It plays a foundational role in bioinformatics, identifying similar regions between DNA, RNA, or protein sequences. Due to its quadratic time complexity and the massive scale of modern sequencing datasets—often involving sequences with billions of elements—Smith–Waterman becomes a major computational bottleneck in genomic pipelines. There are GPU-accelerated libraries, such as CUDASW++, that take advantage of parallelism to achieve large speedups.
 
-The algorithm's structure makes it well-suited for systolic arrays, as it involves computing a 2D dynamic programming matrix where each cell $H{i,j}$ depends only on its top, left, and top-left neighbors. As shown in the diagram, each cell is computed as the maximum of the match/mismatch score from the diagonal and possible insertion or deletion scores from the top or left, adjusted by gap penalties. This regular, local data dependency pattern aligns perfectly with the systolic array model, where processing elements (PEs) are arranged in a 2D grid and communicate only with neighbors in a rhythmic, pipelined fashion. Each PE can compute one cell and pass necessary values to adjacent PEs. This makes the Smith–Waterman algorithm an excellent candidate for implementation on AWS Trainium via the Neuron Kernel Interface (NKI).
+The algorithm's structure makes it well-suited for systolic arrays, as it involves computing a 2D dynamic programming matrix where each cell $H_{i,j}$ depends only on its top, left, and top-left neighbors. As shown in the diagram, each cell is computed as the maximum of the match/mismatch score from the diagonal and possible insertion or deletion scores from the top or left, adjusted by gap penalties. This regular, local data dependency pattern aligns perfectly with the systolic array model, where processing elements (PEs) are arranged in a 2D grid and communicate only with neighbors in a rhythmic, pipelined fashion. Each PE can compute one cell and pass necessary values to adjacent PEs. This makes the Smith–Waterman algorithm an excellent candidate for implementation on AWS Trainium via the Neuron Kernel Interface (NKI).
 
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Smith-Waterman-Algorithm-Scoring-1.png" width="400"/>
@@ -43,7 +43,7 @@ Smith, T. F., & Waterman, M. S. (1981). Identification of common molecular subse
 
 **100%-goal**: Achieve the 75% goal and run the implementation on a dataset that **approximates real-world usage** (e.g., bioinformatics datasets). Perform detailed profiling to understand performance characteristics, resource utilization, and parallel throughput for **real-world dataset** on the Trainium platform. Specifically, what is our final computation to communication ratio? How much time are spending moving data? What is the final runtime and how does it scale with the sequence length (i.e. are systolic arrays a good solution for this problem, as the theory suggests they should be).
 
-**125%-goal**: Compare the profiling results and performance bottlenecks of our systolic implementation with a **high-performance CUDA-based Smith–Waterman library** (such as CUDASW++). Analyze differences in hardware efficiency, data movement costs, and parallel scalability between the systolic and CUDA execution models **OR** Extend our implementation to work for multiple sequence alignment (MSA), in which existing solutions use other, less accurate algorithms, because of the inability for Smith-Watterman on existing platforms to scale (it has complexity L^n for n sequences of max length L, but the best quality).
+**125%-goal**: Compare the profiling results and performance bottlenecks of our systolic implementation with a **high-performance CUDA-based Smith–Waterman library** (such as CUDASW++). Analyze differences in hardware efficiency, data movement costs, and parallel scalability between the systolic and CUDA execution models **OR** Extend our implementation to work for multiple sequence alignment (MSA), in which existing solutions use other, less accurate algorithms, because of the inability for Smith-Watterman on existing platforms to scale (it has complexity $L^n$ for $n$ sequences of max length $L$, but the best quality).
 
 ## Platform choice
 
@@ -51,16 +51,16 @@ Smith, T. F., & Waterman, M. S. (1981). Identification of common molecular subse
 {% capture table %}
 | Task                                                                      | Week 1             | Week 2             | Week 3             | Week 4             |
 |---------------------------------------------------------------------------|--------------------|--------------------|--------------------|--------------------|
-| Set up Trainium Environment                                               | :heavy_check_mark: |                    |                    |                    |
-| Start running NKI examples                                                | :heavy_check_mark: |                    |                    |                    |
-| Write NKI primitives to use in algorithm                                  | :heavy_check_mark: |                    |                    |                    |
-| Implement simple SW algorithm in NKI                                      |                    | :heavy_check_mark: |                    |                    |
-| Profile algorithm to determine optimizations                              |                    | :heavy_check_mark: |                    |                    |
-| Implement optimizations on SW algorithms                                  |                    |                    | :heavy_check_mark: |                    |
-| Start running and profile real workloads                                  |                    |                    | :heavy_check_mark: |                    |
-| Holistic analysis of varied real/worst-case workloads                     |                    |                    |                    | :heavy_check_mark: |
-| [EXTRA] Compare with CUDA library for workload & data movement comparison |                    |                    |                    | :heavy_check_mark: |
-| [EXTRA] Implement multiple sequence alignment                             |                    |                    |                    | :heavy_check_mark: |
+| Set up Trainium Environment                                               | ✅ |                    |                    |                    |
+| Start running NKI examples                                                | ✅ |                    |                    |                    |
+| Write NKI primitives to use in algorithm                                  | ✅ |                    |                    |                    |
+| Implement simple SW algorithm in NKI                                      |                    | ✅ |                    |                    |
+| Profile algorithm to determine optimizations                              |                    | ✅ |                    |                    |
+| Implement optimizations on SW algorithms                                  |                    |                    | ✅ |                    |
+| Start running and profile real workloads                                  |                    |                    | ✅ |                    |
+| Holistic analysis of varied real/worst-case workloads                     |                    |                    |                    | ✅ |
+| [EXTRA] Compare with CUDA library for workload & data movement comparison |                    |                    |                    | ✅ |
+| [EXTRA] Implement multiple sequence alignment                             |                    |                    |                    | ✅ |
 {% endcapture %}
 
 {% include fancy-tables.liquid markdown=table %}
