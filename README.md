@@ -1,8 +1,8 @@
 ---
-title: 15-618 Final Project Spring 2025
+title: 15-618 Final Project: Sequence Alignment Using NKI
 ---
 
-[Permalink](https://aefremov88.github.io/NKI-sequence-alignment/): [https://aefremov88.github.io/NKI-sequence-alignment/](https://aefremov88.github.io/NKI-sequence-alignment/)
+Permalink: [[https://aefremov88.github.io/NKI-sequence-alignment/](https://aefremov88.github.io/NKI-sequence-alignment/](https://aefremov88.github.io/NKI-sequence-alignment/README.html))
 
 ## Team members
 Kandasamy Chokkalingam <kchokkal@andrew.cmu.edu>
