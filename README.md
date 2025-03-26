@@ -37,6 +37,7 @@ We'd like to use [AWS's Trainium](https://aws.amazon.com/ai/machine-learning/tra
 We'll be using the [Neuron Kernel Interface (NKI) language](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/nki/index.html) to construct our implementation, which provides some low-level contructs to make full-use of the NeuronCores. The library provides both high-level collective-communication abstractions and low-level CUDA-like reduction operations.
 
 ## Schedule
+```table
 | Task                                                                      | Week 1             | Week 2             | Week 3             | Week 4             |
 |---------------------------------------------------------------------------|--------------------|--------------------|--------------------|--------------------|
 | Set up Trainium Environment                                               | :heavy_check_mark: |                    |                    |                    |
@@ -49,3 +50,4 @@ We'll be using the [Neuron Kernel Interface (NKI) language](https://awsdocs-neur
 | Holistic analysis of varied real/worst-case workloads                     |                    |                    |                    | :heavy_check_mark: |
 | [EXTRA] Compare with CUDA library for workload & data movement comparison |                    |                    |                    | :heavy_check_mark: |
 | [EXTRA] Implement multiple sequence alignment                             |                    |                    |                    | :heavy_check_mark: |
+```
