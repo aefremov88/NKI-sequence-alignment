@@ -4,6 +4,7 @@
 
 ## Team members
 Kandasamy Chokkalingam
+
 Anton Efremov
 
 ## Summary
@@ -21,8 +22,8 @@ Anton Efremov
 ## Goals and deliverables
 ...
 
-# Platform choice
+## Platform choice
 ...
 
-# Schedule
+## Schedule
 ...
