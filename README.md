@@ -1,4 +1,4 @@
-# 15-618 Final Project
+## 15-618 Final Project
 
 [Link](https://aefremov88.github.io/NKI-sequence-alignment/)
 
@@ -30,7 +30,13 @@ In fact, managing the memory hierarchy will be, in our current perspective, one 
 In terms of dependencies, to calculate a specific (i,j) cell, as shown in the above diagram, we need the cells previous to it in the row and the cell previous to in the column, as well as the (i-1,j-1) cell. This has a much higher degree of dependencies than previous problems we've implemented in 418, but the key is that this is well-suited to systolic arrays. The locality, in the traditional sense, is good across a row, but poor since we need to access values in previous columns. However - since we're using systolic arrays, we can decompose the problem into "tiles" (how NKI calls them), and each tile only needs the values bordering it. There is no divergent execution to worry about since we execute the same steps for each cell, which means we will not have to worry too much about workload balance. In addition, the communication to computation ratio is high since for a cell, on average, we need to take so many max's across the array and for each cell. However, since our platform allows us to execute in a SPMD way, this is less of a concern, since we can operate across multiple data at once.
 
 ## Resources
-...
+We'd like to use [AWS's Trainium](https://aws.amazon.com/ai/machine-learning/trainium/) platform. This platform uses Trainium chips, which use the NeuronCore architecture and are [based off of systolic arrays](https://aws.amazon.com/blogs/machine-learning/how-to-extend-the-functionality-of-aws-trainium-with-custom-operators/). The combination of multiple engines, fast interconnect, and multiple cores, makes these a perfect chip for running systolic array workloads. We'd need to get access (likely credits) to the Trn1 AWS Trainium machines.
+
+We'll be using the [Neuron Kernel Interface (NKI) language](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/nki/index.html) to construct our implementation, which provides some low-level contructs to make full-use of the NeuronCores. The library provides both high-level collective-communication abstractions and low-level CUDA-like reduction operations.
+
+We'll be starting from scratch, although there is the CUDA library for SW mentioned above. However, we believe our implementation will have to be much more different in order to make full use of the NeuronCore architecture. The SW algorithm is well documented in the original paper, however, and there many extensions.
+
+Smith, T. F., & Waterman, M. S. (1981). Identification of common molecular subsequences. Journal of molecular biology, 147(1), 195–197. https://doi.org/10.1016/0022-2836(81)90087-5
 
 ## Goals and deliverables
 **75%-goal**: Successfully implement the Smith–Waterman algorithm using the systolic array parallel programming model on AWS Trainium via the Neuron Kernel Interface (NKI). Demonstrate maximum parallelism from this model by designing an efficient dataflow and pipeline synchronization strategy.
@@ -40,11 +46,6 @@ In terms of dependencies, to calculate a specific (i,j) cell, as shown in the ab
 **125%-goal**: Compare the profiling results and performance bottlenecks of our systolic implementation with a **high-performance CUDA-based Smith–Waterman library** (such as CUDASW++). Analyze differences in hardware efficiency, data movement costs, and parallel scalability between the systolic and CUDA execution models **OR** Extend our implementation to work for multiple sequence alignment (MSA), in which existing solutions use other, less accurate algorithms, because of the inability for Smith-Watterman on existing platforms to scale (it has complexity L^n for n sequences of max length L, but the best quality).
 
 ## Platform choice
-We'd like to use [AWS's Trainium](https://aws.amazon.com/ai/machine-learning/trainium/) platform. This platform uses Trainium chips, which use the NeuronCore architecture and are [based off of systolic arrays](https://aws.amazon.com/blogs/machine-learning/how-to-extend-the-functionality-of-aws-trainium-with-custom-operators/). The combination of multiple engines, fast interconnect, and multiple cores, makes these a perfect chip for running systolic array workloads.
-
-We'll be using the [Neuron Kernel Interface (NKI) language](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/nki/index.html) to construct our implementation, which provides some low-level contructs to make full-use of the NeuronCores. The library provides both high-level collective-communication abstractions and low-level CUDA-like reduction operations.
-
-We'll be starting from scratch, although there is the CUDA library for SW mentioned above. However, we believe our implementation will have to much different in order to make full use of the NeuronCore architecture.
 
 ## Schedule
 {% capture table %}
