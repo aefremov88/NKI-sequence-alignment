@@ -38,7 +38,6 @@ We'll be using the [Neuron Kernel Interface (NKI) language](https://awsdocs-neur
 
 ## Schedule
 {% capture table %}
-```table
 | Task                                                                      | Week 1             | Week 2             | Week 3             | Week 4             |
 |---------------------------------------------------------------------------|--------------------|--------------------|--------------------|--------------------|
 | Set up Trainium Environment                                               | :heavy_check_mark: |                    |                    |                    |
@@ -51,7 +50,6 @@ We'll be using the [Neuron Kernel Interface (NKI) language](https://awsdocs-neur
 | Holistic analysis of varied real/worst-case workloads                     |                    |                    |                    | :heavy_check_mark: |
 | [EXTRA] Compare with CUDA library for workload & data movement comparison |                    |                    |                    | :heavy_check_mark: |
 | [EXTRA] Implement multiple sequence alignment                             |                    |                    |                    | :heavy_check_mark: |
-```
 {% endcapture %}
 
 {% include fancy-tables.liquid markdown=table %}
