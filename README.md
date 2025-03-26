@@ -25,7 +25,11 @@ One challenge is the algorithm itself. Smith-Watterman is traditionally a very i
 ...
 
 ## Goals and deliverables
-...
+**75%-goal**: Successfully implement the Smith–Waterman algorithm using the systolic array parallel programming model on AWS Trainium via the Neuron Kernel Interface (NKI). Demonstrate maximum parallelism from this model by designing an efficient dataflow and pipeline synchronization strategy.
+
+**100%-goal**: Achieve the 75% goal and run the implementation on a dataset that **approximates real-world usage** (e.g., bioinformatics datasets). Perform detailed profiling to understand performance characteristics, resource utilization, and parallel throughput for **real-world dataset** on the Trainium platform.
+
+**125%-goal**: Compare the profiling results and performance bottlenecks of our systolic implementation with a **high-performance CUDA-based Smith–Waterman library** (such as CUDASW++). Analyze differences in hardware efficiency, data movement costs, and parallel scalability between the systolic and CUDA execution models.
 
 ## Platform choice
 We'd like to use [AWS's Trainium](https://aws.amazon.com/ai/machine-learning/trainium/) platform. This platform uses Trainium chips, which use the NeuronCore architecture and are [based off of systolic arrays](https://aws.amazon.com/blogs/machine-learning/how-to-extend-the-functionality-of-aws-trainium-with-custom-operators/). The combination of multiple engines, fast interconnect, and multiple cores, makes these a perfect chip for running systolic array workloads.
