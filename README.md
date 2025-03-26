@@ -1,5 +1,7 @@
 # 15-618 Final Project
 
+[Link](https://aefremov88.github.io/NKI-sequence-alignment/)
+
 ## Team members
 Kandasamy Chokkalingam <kchokkal@andrew.cmu.edu>
 
