@@ -3,9 +3,9 @@
 ## URL
 
 ## Team members
-Kandasamy Chokkalingam
+Kandasamy Chokkalingam <kchokkal@andrew.cmu.edu>
 
-Anton Efremov
+Anton Efremov <aefremov@andrew.cmu.edu>
 
 ## Summary
 ...
