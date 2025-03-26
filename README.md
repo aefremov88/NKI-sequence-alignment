@@ -1,6 +1,6 @@
--------
-title: 15-618 Final Project
--------
+---
+title: 15-618 Final Project Spring 2025
+---
 
 [Permalink](https://aefremov88.github.io/NKI-sequence-alignment/): [https://aefremov88.github.io/NKI-sequence-alignment/](https://aefremov88.github.io/NKI-sequence-alignment/)
 
