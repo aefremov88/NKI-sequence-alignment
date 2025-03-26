@@ -1,7 +1,3 @@
-# NKI-sequence-alignment
-
-## URL
-
 ## Team members
 Kandasamy Chokkalingam <kchokkal@andrew.cmu.edu>
 
