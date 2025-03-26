@@ -1,1 +1,1 @@
-# 15618-final-project
+# NKI-sequence-alignment
