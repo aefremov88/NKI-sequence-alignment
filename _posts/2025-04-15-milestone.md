@@ -1,6 +1,7 @@
 ---
 layout: post
 ---
+[PDF Link](https://aefremov88.github.io/NKI-sequence-alignment/milestone.pdf)
 
 **Summary**
 
