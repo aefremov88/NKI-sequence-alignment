@@ -16,7 +16,7 @@ Currently, we have ported about 95% of our implementation to NKI, and we expect 
 
 **Progress vs Plan**
 
-We were able to significantly reduce the delay in our plan caused by the late access to Trainium instances, and we now believe that by the end of this week, we will be fully back on track. See [https://aefremov88.github.io/NKI-sequence-alignment/README.html](https://aefremov88.github.io/NKI-sequence-alignment/README.html) for an updated schedule.
+We were able to significantly reduce the delay in our plan caused by the late access to Trainium instances, and we now believe that by the end of this week, we will be fully back on track. See [https://aefremov88.github.io/NKI-sequence-alignment](https://aefremov88.github.io/NKI-sequence-alignment/) for an updated schedule.
 
 In the remaining two weeks, we plan to complete the rest of our planned deliverables, including one EXTRA goal:
 
