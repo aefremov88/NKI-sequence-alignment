@@ -1,5 +1,6 @@
 ---
 title: "15-618 Final Project: Sequence Alignment Using NKI"
+layout: home
 ---
 
 Permalink: [https://aefremov88.github.io/NKI-sequence-alignment/README.html](https://aefremov88.github.io/NKI-sequence-alignment/README.html)
