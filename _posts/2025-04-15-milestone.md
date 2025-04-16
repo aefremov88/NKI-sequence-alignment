@@ -58,4 +58,31 @@ Internally, the main difficulty is adapting to the new programming environment. 
 
 Overall, we feel confident since now that we have a working development environment, things are moving much faster. We’ve already made strong progress on our implementation \- around 95% of the program is debugged.
 
+## Current Schedule
+
+✅ indicates the task is done, ☑️ indicates the task is in progress, ✔️ indicates the task is planned.
+
+{% capture table %}
+| Task                                                                       | Week 1 | Week 2 | Week 3 (04/15~04/18) | Week 3.5 (04/19~04/22) | Week 4 (04/22~04/25) | Week 4.5 (04/25~04/28) |
+|----------------------------------------------------------------------------|--------|--------|----------------------|------------------------|----------------------|------------------------|
+| Set up Trainium Environment                                                | ✅      |        |                      |                        |                      |                        |
+| Start running NKI examples                                                 | ✅      |        |                      |                        |                      |                        |
+| Write NKI primitives to use in algorithm                                   | ✅      |        |                      |                        |                      |                        |
+| Implement simple SW algorithm in NKI                                       |        | ☑️      |                      |                        |                      |                        |
+| Profile algorithm to determine optimizations                               |        | ☑️      |                      |                        |                      |                        |
+| Optimization: Convert to operations to NKI.isa for efficiency              |        |        | ✔️ (Kandasamy)        |                        |                      |                        |
+| Optimization: Improve memory access pattern                                |        |        | ✔️ (Anton)            |                        |                      |                        |
+| Profiling: Start running and profile real workloads                        |        |        | ✔️ (Combined)         |                        |                      |                        |
+| Profiling: Pipeline computation with tiling mentioned in CUDASW 4.0        |        |        |                      | ✔️ (Anton)              |                      |                        |
+| Experiment with engine configurations to find better patterns              |        |        |                      | ✔️ (Kandasamy)          |                      |                        |
+| Profiling: Analyze and optimize performance for 4x4 grid chip              |        |        |                      |                        | ✔️ (Combined)         |                        |
+| Rerun profiling experiments to identify algorithmic bottlenecks            |        |        |                      |                        | ✔️ (Anton)            |                        |
+| Run different type of real workloads to identify poor automatic pipelining |        |        |                      |                        | ✔️ (Kandasamy)        |                        |
+| [EXTRA] Compare with CUDA library for workload & data movement comparison  |        |        |                      |                        |                      | ✔️ (Anton)              |
+| [EXTRA] Implement multiple sequence alignment                              |        |        |                      |                        |                      | ✔️ (Kandasamy)          |
+{% endcapture %}
+
+{% include fancy-tables.liquid markdown=table %}
+
+
 [^1]:  50% of quota was approved, which allows us to run parallel computations on one Trainium chip, but doesn’t allow to explore additional parallelism by accessing the whole instance, comprising 16 Trainium chips forming a systolic array
