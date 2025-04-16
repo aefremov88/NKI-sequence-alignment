@@ -1,5 +1,4 @@
 ---
-title: "15-618 Final Project: Sequence Alignment Using NKI"
 layout: home
 ---
 
