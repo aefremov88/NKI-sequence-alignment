@@ -14,8 +14,8 @@ Anton Efremov <aefremov@andrew.cmu.edu>
 In this document, we propose implementing the **Smith–Waterman algorithm** for local sequence alignment using AWS's Neuron Kernel Interface to program on their systolic-array based NeuronCores. This algorithm features a 2D data passing pattern, which presents a strong opportunity for multiple levels of parallelization on their combined vectorized, SPMD, and systolic array based system.
 
 ## Table of Contents
-- [Proposal](/2025/03/26/proposal.html)
-- [Milestone Report](/2025/04/15/milestone.html)
+- [Proposal](/NKI-sequence-alignment/2025/03/26/proposal.html)
+- [Milestone Report](/NKI-sequence-alignment/2025/04/15/milestone.html)
 
 ## Up-to-date Schedule
 {% capture table %}
